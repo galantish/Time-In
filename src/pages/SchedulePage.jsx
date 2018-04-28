@@ -59,14 +59,29 @@ class SchedulePage extends Component {
     let timeRequested = undefined
     if (event.target.name === "service"){
       switch(event.target.value){
-        case "eyebrow":
-          timeRequested = 10
+        case "trx":
+          timeRequested = 45
           break;
-        case "mustache":
-          timeRequested = 30
+        case "pilates":
+          timeRequested = 60
           break;
-        default: timeRequested = 10
-        }
+        case "strenght":
+          timeRequested = 60
+          break;
+        case "hit":
+          timeRequested = 45
+          break;
+        case "cardio":
+          timeRequested = 50
+          break;
+        case "crossFit":
+          timeRequested = 80
+          break;
+        case "yoga":
+          timeRequested = 75
+          break;
+
+      }
     }
 
     this.setState({ [event.target.name]: event.target.value, showResult: false, hasError: false, timeRequested });
@@ -121,7 +136,13 @@ class SchedulePage extends Component {
 
   render() {
 
-    const pic = this.state.service === 'eyebrow' ? "pics/eye.jpg" : "/pics/mustache.jpg"; 
+    // if (this.state.service == 'trx')
+    //   const pic = "pics/trx.png";
+    // else
+    const pic = "pics/strength.png";
+
+      
+    //const pic = this.state.service === 'trx' ? "pics/trx.png" : "/pics/yoga.png"; 
 
     return (
       <div>
@@ -136,19 +157,24 @@ class SchedulePage extends Component {
                 id: 'service-combo',
               }}
               Width = "100px">
-              <MenuItem value="eyebrow">Eyebrows</MenuItem>
-              <MenuItem value="mustache">Mustache</MenuItem>
+              <MenuItem value="trx" default>TRX</MenuItem> 
+              <MenuItem value="pilates">Pilates</MenuItem>
+              <MenuItem value="strength">Strength</MenuItem>
+              <MenuItem value="hit">HIT</MenuItem>
+              <MenuItem value="cardio">Cardio</MenuItem>
+              <MenuItem value="crossFit">Cross-Fit</MenuItem>
+              <MenuItem value="yoga">Yoga</MenuItem>
+
             </Select>
           </FormControl>
           <TextField 
             id="from-when"
             name="from"
-            label="Starting at"
+            label="As of"
             type="datetime-local"
             onChange={this.handleChange}
             defaultValue={this.state.from}
             className="control"
-            width = "200px"
             InputLabelProps={{
             shrink: true,
             
@@ -189,14 +215,14 @@ class SchedulePage extends Component {
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-slide-description">
-                Do you wanna set up appointment to { Moment(this.state.selectedTime.start).format("YYYY-MM-DD HH:mm ") } 
+                Do you want to set up appointment to { Moment(this.state.selectedTime.start).format("YYYY-MM-DD HH:mm ") } 
                 until { Moment(this.state.selectedTime.end).format("YYYY-MM-DD HH:mm ") } 
-                for {this.state.service} At 'Genish Mustache'
+                for {this.state.service} At 'Shape-In'
               </DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleSaveToCalendar.bind(this)} color="primary">
-                Save to calendar
+                Save to Calendar
               </Button>
               <Button onClick={this.handleClose} color="primary">
                 Agree

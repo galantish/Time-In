@@ -1,5 +1,5 @@
 .control {
-    width: 200px;
+    width: 300px;
     margin-left: 20px !important;
     margin-right: 20px !important;
 }
@@ -14,6 +14,7 @@
     justify-content: space-around;
 }
 
-.TextField {
-    font-weight: 100;
+.nofar
+{
+    color: "yellow";
 }
