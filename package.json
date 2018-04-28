@@ -9,14 +9,11 @@
     "moment": "^2.22.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-<<<<<<< HEAD
     "react-load-image": "^0.1.6",
-=======
->>>>>>> e940a3815135746660a38bbdd35bedf8ee5ab33f
     "react-scripts": "1.1.4",
+    "react-slideshow-image": "^0.2.2",
     "yarn": "^1.6.0"
   },
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
