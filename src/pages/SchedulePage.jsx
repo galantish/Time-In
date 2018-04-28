@@ -135,12 +135,12 @@ class SchedulePage extends Component {
                 name: 'service',
                 id: 'service-combo',
               }}
-              autoWidth>
+              Width = "100px">
               <MenuItem value="eyebrow">Eyebrows</MenuItem>
               <MenuItem value="mustache">Mustache</MenuItem>
             </Select>
           </FormControl>
-          <TextField
+          <TextField 
             id="from-when"
             name="from"
             label="Starting at"
@@ -148,8 +148,10 @@ class SchedulePage extends Component {
             onChange={this.handleChange}
             defaultValue={this.state.from}
             className="control"
+            width = "200px"
             InputLabelProps={{
-              shrink: true,
+            shrink: true,
+            
             }}
           />
           <br/><br/>

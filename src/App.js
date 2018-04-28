@@ -5,6 +5,7 @@ import SchedulePage from './pages/SchedulePage';
 import MessagesArea from './components/MessagesArea';
 import Tiempo from './components/Tiempo';
 
+
 class App extends Component {
 
   constructor(props){
@@ -17,13 +18,17 @@ class App extends Component {
   handleUserName(name){
     this.setState({name})
   }
-
+  
+  
   render() {
+
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to Time-In</h1> 
-          <div className="vertical-center2"> <h3>Genish mustache</h3> </div>
+        
+        <img src= "pics/TimeInLogogo.bmp" />
+        
+          <div className="vertical-center2"> <h1>Shape-In</h1> </div>
           <div className="username vertical-center">
             {this.state.name}
           </div>
@@ -34,7 +39,7 @@ class App extends Component {
         </div>
         <Tiempo/>
         <div className="footer-container">
-          @ Time-In @ Copyright 2018
+          @ Time-In Copyright 2018
         </div>
       </div>
     );
