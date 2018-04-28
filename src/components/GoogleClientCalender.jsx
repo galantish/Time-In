@@ -119,12 +119,14 @@ export default class GoogleClientCalender extends Component {
     render(){    
       return(
         <div>
-        <Button variant="raised" color="primary" className="button-control" onClick={this.handleAuthClick.bind(this)}>
+        <Button variant="raised" class="shir" onClick={this.handleAuthClick.bind(this)}>
           Find
         </Button>
-        <Button variant="raised" color="secondary" className="button-control" onClick={this.handleSignoutClick}>
+
+ 
+      {/*<Button variant="raised" color="secondary" className="button-control" onClick={this.handleSignoutClick}>
           Force signout
-        </Button>
+      </Button>*/}
         </div>
       )
     }

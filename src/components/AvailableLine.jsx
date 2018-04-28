@@ -50,7 +50,7 @@ class AvailableLine extends Component {
                 <Avatar src={pic}/>
                 <ListItemText primary={`From ${displayedText(start)} To ${displayedText(end)}`} />
                 <Button variant="flat" color="primary" onClick={this.handleClick.bind(this)}>
-                    Pick
+                    This One
                 </Button>
             </ListItem>
         )
