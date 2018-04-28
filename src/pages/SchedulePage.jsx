@@ -65,8 +65,8 @@ class SchedulePage extends Component {
         case "mustache":
           timeRequested = 30
           break;
-        
-      }
+        default: timeRequested = 10
+        }
     }
 
     this.setState({ [event.target.name]: event.target.value, showResult: false, hasError: false, timeRequested });

@@ -11,6 +11,9 @@ export function saveToCalendar(title, content, range, calendarId){
       'end': {
         'dateTime': range.end,
       },
+      'attendees': [
+        {'email': 'intimeproject2018@gmail.com'}
+      ],
       'reminders': {
         'useDefault': true
       }
