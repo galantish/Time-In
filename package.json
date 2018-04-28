@@ -11,6 +11,7 @@
     "react-dom": "^16.3.2",
     "react-load-image": "^0.1.6",
     "react-scripts": "1.1.4",
+    "react-slideshow-image": "^0.2.2",
     "yarn": "^1.6.0"
   },
   "scripts": {
