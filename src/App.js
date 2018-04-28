@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom';
 import SchedulePage from './pages/SchedulePage';
 import MessagesArea from './components/MessagesArea';
 import { HomePage } from './pages/HomePage';
+import { AdminPage } from './pages/AdminPage';
 import Tiempo from './components/Tiempo';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     super(props);
     this.state = {
       name: '',
+      headlineName: '',
     }
   }
 
@@ -20,19 +22,29 @@ class App extends Component {
     this.setState({ name })
   }
 
+  handleHeadLineName = headlineName => {
+    this.setState({ headlineName })
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
           <header className="App-header">
-            <h1 className="App-title">Welcome to Time-In</h1>
-            <div className="vertical-center2"> <h3>Genish mustache</h3> </div>
+            <NavLink to="/">
+              <h1 className="App-title">Welcome to Time-In</h1>
+            </NavLink>
+            <NavLink to="/admin">
+              <h4 className="App-title">Admin Console</h4>
+            </NavLink>
+            <div className="vertical-center2"> <h3>{this.state.headlineName}</h3> </div>
             <div className="username vertical-center">
               {this.state.name}
             </div>
           </header>
           <Switch>
             <Route exact path="/" render={props => <HomePage handleUserName={this.handleUserName} />}></Route>
+            <Route exact path="/admin" render={props => <AdminPage handleHeadLineName={this.handleHeadLineName} {...props} />}></Route>
           </Switch>
           <Tiempo />
           <div className="footer-container">
