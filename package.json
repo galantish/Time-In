@@ -10,21 +10,9 @@
     "pui-css-images": "^8.3.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-<<<<<<< HEAD
-    "react-image-show": "^0.2.4",
-    "react-image-slideshow": "^1.5.4",
     "react-load-image": "^0.1.6",
     "react-portal": "^4.1.5",
     "react-scripts": "^1.1.4",
-=======
-
-
-<<<<<<< HEAD
-=======
-    "react-load-image": "^0.1.6",
->>>>>>> 806bbca089dd9a880ae13ee79796ca0f43c26357
-    "react-scripts": "1.1.4",
->>>>>>> 290a38da6d249b12e347592c38cec5ea28cd3c32
     "react-slideshow-image": "^0.2.2",
     "tween.js": "^16.6.0",
     "yarn": "^1.6.0"
