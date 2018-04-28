@@ -8,6 +8,7 @@ import { HomePage } from './pages/HomePage';
 import { AdminPage } from './pages/AdminPage';
 import Tiempo from './components/Tiempo';
 
+
 class App extends Component {
 
   constructor(props) {
@@ -18,7 +19,7 @@ class App extends Component {
     }
   }
 
-  handleUserName = name => {
+  handleUserName(name) {
     this.setState({ name })
   }
 
@@ -26,32 +27,58 @@ class App extends Component {
     this.setState({ headlineName })
   }
 
+
+
   render() {
+
     return (
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <NavLink to="/">
-              <h1 className="App-title">Welcome to Time-In</h1>
-            </NavLink>
-            <NavLink to="/admin">
-              <h4 className="App-title">Admin Console</h4>
-            </NavLink>
-            <div className="vertical-center2"> <h3>{this.state.headlineName}</h3> </div>
-            <div className="username vertical-center">
-              {this.state.name}
-            </div>
-          </header>
-          <Switch>
-            <Route exact path="/" render={props => <HomePage handleUserName={this.handleUserName} />}></Route>
-            <Route exact path="/admin" render={props => <AdminPage handleHeadLineName={this.handleHeadLineName} {...props} />}></Route>
-          </Switch>
-          <Tiempo />
+        <div>
+
+          <div className="App">
+            <header className="App-header">
+              <NavLink to="/">
+                <h1 className="App-title">Welcome to Time-In</h1>
+              </NavLink>
+              <NavLink to="/admin">
+                <h4 className="App-title">Admin Console</h4>
+              </NavLink>
+              <div className="vertical-center2"> <h1>{this.state.headlineName}</h1> </div>
+              <div className="username vertical-center">
+                {this.state.name}
+              </div>
+            </header>
+            <Switch>
+              <Route exact path="/" render={props => <HomePage handleUserName={this.handleUserName} />}></Route>
+              <Route exact path="/admin" render={props => <AdminPage handleHeadLineName={this.handleHeadLineName} {...props} />}></Route>
+            </Switch>
+            <Tiempo />
+          </div>
           <div className="footer-container">
             @ Time-In @ Copyright 2018
+  
+      <div className="App">
+              <header className="App-header">
+
+                <img src="pics/TimeInLogogo.bmp" />
+
+                <div className="vertical-center2"> <h1>Shape-In</h1> </div>
+                <div className="username vertical-center">
+                  {this.state.name}
+                </div>
+              </header>
+              <div className='App-Main'>
+                <MessagesArea />
+                <SchedulePage getUserName={this.handleUserName.bind(this)} />
+              </div>
+              <Tiempo />
+              <div className="footer-container">
+                @ Time-In Copyright 2018
+        </div>
+            </div>
           </div>
         </div>
-      </Router >
+      </Router>
     );
   }
 }

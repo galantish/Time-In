@@ -7,12 +7,14 @@
     "material-ui": "^1.0.0-beta.42",
     "material-ui-icons": "^1.0.0-beta.36",
     "moment": "^2.22.1",
-    "react": "^16.3.2y",
+    "pui-css-images": "^8.3.3",
+    "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-load-image": "^0.1.6",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
+    "react-portal": "^4.1.5",
+    "react-scripts": "^1.1.4",
     "react-slideshow-image": "^0.2.2",
+    "tween.js": "^16.6.0",
     "yarn": "^1.6.0"
   },
   "scripts": {

@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-import SchedulePage from './SchedulePage';
 import MessagesArea from '../components/MessagesArea';
+import SchedulePage from './SchedulePage';
 
 export const HomePage = props => {
     return (
@@ -10,4 +10,4 @@ export const HomePage = props => {
             <SchedulePage getUserName={props.handleUserName} />
         </div>
     )
-}
+} 

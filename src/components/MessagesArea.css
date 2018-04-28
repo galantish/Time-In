@@ -1,0 +1,5 @@
+.react-slideshow-wrapper > .images-wrap > div > img{
+   width: 40% !important;
+   max-height: 350px;
+   margin: 0 auto;
+}
