@@ -4,11 +4,13 @@
     margin-right: 20px !important;
     font-family: "Segoe UI Semibold";
     margin-bottom: 30px;
+    
 }
 
 .button-control {
     margin-left: 20px !important;
     margin-right: 20px !important;
+    text-decoration-color: aliceblue;
 }
 
 .available-list {   

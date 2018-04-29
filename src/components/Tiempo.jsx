@@ -18,12 +18,10 @@ class Tiempo extends Component
         
         return (
 
-            
-                            
             <ThemeProvider theme={{
-                background: '#f5f8fb',
+                background: 'rgb(162, 165, 169)',
                 fontFamily: 'Segoe UI Semibold',
-                headerBgColor: 'rgb(0, 63, 114)',
+                headerBgColor: 'rgb(47, 48, 49)',
                 headerFontColor: 'White',
                 headerFontSize: '15px',
                 botBubbleColor: '#87CEEB',
@@ -68,3 +66,4 @@ class Tiempo extends Component
 
 
 export default Tiempo;
+
