@@ -124,9 +124,9 @@ export default class GoogleClientCalender extends Component {
         </Button>
 
  
-      {<Button variant="raised" color="secondary" className="button-control" onClick={this.handleSignoutClick}>
+      {/**<Button variant="raised" color="secondary" className="button-control" onClick={this.handleSignoutClick}>
           Force signout
-      </Button>}
+      </Button>**/}
         </div>
       )
     }

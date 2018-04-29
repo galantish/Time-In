@@ -19,7 +19,7 @@ class Tiempo extends Component
         return (
 
             <ThemeProvider theme={{
-                background: 'rgb(162, 165, 169)',
+                background: 'rgb(240, 240, 240)',
                 fontFamily: 'Segoe UI Semibold',
                 headerBgColor: 'rgb(47, 48, 49)',
                 headerFontColor: 'White',

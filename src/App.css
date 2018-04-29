@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: rgb(76, 78, 80);
+  background-color: rgb(240, 240, 240);
 
 }
 
@@ -72,7 +72,7 @@
 
 .findBtn 
 {
-  background-color: #4ea6ca; 
+  background-color: #87CEEB; 
   font-weight: bold;
   border: none;
   color: white;
