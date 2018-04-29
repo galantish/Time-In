@@ -9,13 +9,17 @@ import './Tiempo.css'
 class Tiempo extends Component 
 {
     constructor(props){
-      super(props)
-      this.state = { }
+        super(props)
+        this.state = { }
     }
 
+    
     render(){
         
         return (
+
+            
+                            
             <ThemeProvider theme={{
                 background: '#f5f8fb',
                 fontFamily: 'Segoe UI Semibold',
@@ -26,9 +30,13 @@ class Tiempo extends Component
                 botFontColor: '#fff',
                 userBubbleColor: '#fff',
                 userFontColor: '#4a4a4a',
+               
+                
                 }}>
                 
+                
                 <ChatBot
+                    
                     steps={[
                     {
                         id: '1',
@@ -49,11 +57,14 @@ class Tiempo extends Component
                         
                     },
                     ]}
+
+                
                 />
                 
             </ThemeProvider>
         )
     }
 }
+
 
 export default Tiempo;
