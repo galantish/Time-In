@@ -89,7 +89,7 @@ class SchedulePage extends Component {
   };
 
   handleSaveToCalendar(){
-    const title = `Appointment to ${this.state.service} @ 'Genish Mustache'`,
+    const title = `Appointment to ${this.state.service} @ 'Shape-In'`,
     content = "Please notice if you are late", 
     range = this.state.selectedTime, 
     calendarId = 'primary';
@@ -217,7 +217,7 @@ class SchedulePage extends Component {
               <DialogContentText id="alert-dialog-slide-description">
                 Do you want to set up appointment to { Moment(this.state.selectedTime.start).format("YYYY-MM-DD HH:mm ") } 
                 until { Moment(this.state.selectedTime.end).format("YYYY-MM-DD HH:mm ") } 
-                for {this.state.service} At 'Shape-In'
+                for {this.state.service} At 'Shape-In'?
               </DialogContentText>
             </DialogContent>
             <DialogActions>
