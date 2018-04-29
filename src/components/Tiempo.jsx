@@ -6,7 +6,8 @@ import {ThemeProvider} from 'styled-components'
 
 import './Tiempo.css'
 
-class Tiempo extends Component {
+class Tiempo extends Component 
+{
     constructor(props){
       super(props)
       this.state = { }
@@ -17,15 +18,16 @@ class Tiempo extends Component {
         return (
             <ThemeProvider theme={{
                 background: '#f5f8fb',
-                fontFamily: 'Helvetica Neue',
-                headerBgColor: '#000000',
-                headerFontColor: '#fff',
+                fontFamily: 'Segoe UI Semibold',
+                headerBgColor: 'rgb(0, 63, 114)',
+                headerFontColor: 'White',
                 headerFontSize: '15px',
-                botBubbleColor: '#000000',
+                botBubbleColor: '#87CEEB',
                 botFontColor: '#fff',
                 userBubbleColor: '#fff',
                 userFontColor: '#4a4a4a',
                 }}>
+                
                 <ChatBot
                     steps={[
                     {
@@ -41,10 +43,14 @@ class Tiempo extends Component {
                     {
                         id: '3',
                         message: 'Hi {previousValue}, nice to meet you!',
+                        //message: 'Who is {previousValue}?',
+
                         end: true,
+                        
                     },
                     ]}
                 />
+                
             </ThemeProvider>
         )
     }

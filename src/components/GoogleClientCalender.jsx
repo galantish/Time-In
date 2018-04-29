@@ -50,7 +50,7 @@ export default class GoogleClientCalender extends Component {
           showAuthButton: false,
           showSignOutButton: true
         })
-        const username = gapi.auth2.getAuthInstance().currentUser.Ab.w3.ig;
+        const username = 'Hello, ' + gapi.auth2.getAuthInstance().currentUser.Ab.w3.ig;
         this.props.getUserName(username)
         this.listUpcomingEvents(callback);
         //insertNewEvent();
@@ -119,7 +119,7 @@ export default class GoogleClientCalender extends Component {
     render(){    
       return(
         <div>
-        <Button variant="raised" class="shir" onClick={this.handleAuthClick.bind(this)}>
+        <Button variant="raised" class="findBtn" onClick={this.handleAuthClick.bind(this)}>
           Find
         </Button>
 

@@ -4,9 +4,7 @@
 
 .App-header {
   text-align: left;
-
   font-family: "Segoe UI Semibold";
-
   position: fixed;
   display: flex;
   top: 0;
@@ -50,12 +48,13 @@
   top: 80px;
 }
 
-.username{
+.username
+{
   margin-right: 20px;
-
 }
 
-.footer-container {
+.footer-container 
+{
   position: fixed;
   bottom: 0;
   background-color: rgb(0, 63, 114);
@@ -63,10 +62,15 @@
   height: 5px;
   color: rgba(255, 255, 255, 0.932);
   padding: 20px;
+  font-family: "Segoe UI Semibold";
+  margin: auto;
+  text-align: center;
 }
 
-.shir {
-  background-color: #4CAF50; /* Green */
+.findBtn 
+{
+  background-color: #87CEEB; 
+  font-weight: bold;
   border: none;
   color: white;
   padding: 7px 20px;

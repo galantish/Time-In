@@ -23,8 +23,8 @@ class MessagesArea extends React.Component{
         return (
             <Slide
           images={this.state.img}
-          duration={3000}
-            transitionDuration={1000}
+          duration={4000}
+            transitionDuration={3000}
             />
             );
     }

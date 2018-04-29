@@ -31,7 +31,7 @@ class SchedulePage extends Component {
   constructor(props){
     super(props)
     this.state = {
-      service: '',
+      service: 'trx',
       from: Moment().format("YYYY-MM-DDTHH:mm"),
       showResult: false,
       results: [],
@@ -146,9 +146,9 @@ class SchedulePage extends Component {
 
     return (
       <div>
-        <form className="schedule-form" autoComplete="off">
+        <form class="search_area" autoComplete="off">
           <FormControl className="control">
-            <InputLabel htmlFor="service-simple">Select service</InputLabel>
+            <InputLabel htmlFor="service-simple">Select Service</InputLabel>
             <Select
               value={this.state.service}
               onChange={this.handleChange}
@@ -211,7 +211,7 @@ class SchedulePage extends Component {
             aria-labelledby="alert-dialog-slide-title"
             aria-describedby="alert-dialog-slide-description">
             <DialogTitle id="alert-dialog-slide-title">
-              Just to be sure
+              Just to be sure..
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-slide-description">
