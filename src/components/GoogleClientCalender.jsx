@@ -123,8 +123,12 @@ export default class GoogleClientCalender extends Component {
           Find
         </Button>
 
-
-
+ 
+      {
+        <Button variant="raised" class="logoutBtn" onClick={this.handleSignoutClick}>
+            Force Signout
+        </Button> 
+    }
         </div>
       )
     }

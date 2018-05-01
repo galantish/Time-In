@@ -1,10 +1,11 @@
-.App {
+.App 
+{
   text-align: center;
-  background-color:rgba(255, 255, 255, 0.932);
-
+  background-color: rgb(240, 240, 240);
 }
 
-.App-header {
+.App-header 
+{
   text-align: left;
   font-family: "Segoe UI Semibold";
   position: fixed;
@@ -13,40 +14,44 @@
   width: 100%;
   height: 60px;
   justify-content: space-between; 
-  background-color: rgb(85, 85, 85);
+  background-color: rgb(47, 48, 49);
   color: rgba(255, 255, 255, 0.932);
   z-index: 10000;
 }
 
-.App-header img {
+.App-header img 
+{
   float: left;
   width: 50px;
   height: 60px;
   background: #555;
 }
 
-.App-title {
-
+.App-title 
+{
   text-shadow: 1.5px 1.5px rgb(106, 106, 245);
-
   top: 5px;
   left: 5px;
   float: left;
   font-size: 1.5em;
- 
 }
 
-.vertical-center2 {
-  vertical-align: middle; 
+.vertical-center2 
+{
+  vertical-align: center; 
   line-height: 20px;
+  margin-left: 100px;
 }
 
-.vertical-center {
+
+.vertical-center 
+{
   vertical-align: middle; 
   line-height: 60px;
 }
 
-.App-Main {
+.App-Main 
+{
   position: relative;
   top: 80px;
 }
@@ -60,7 +65,7 @@
 {
   position: fixed;
   bottom: 0;
-  background-color:rgb(85, 85, 85);
+  background-color:rgb(47, 48, 49);
   width: 100%;
   height: 5px;
   color: rgba(255, 255, 255, 0.932);
@@ -72,19 +77,41 @@
 
 .findBtn 
 {
-  background-color: #4ea6ca; 
+  margin-left: 80px;
+  background-color: #87CEEB; 
   font-weight: bold;
   border: none;
   color: white;
   padding: 7px 20px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   border-radius: 10px;
+  cursor: pointer;
+  opacity: 1;
+
 }
 
-logo
+.findBtn:hover 
 {
-  background-color: 'white';
+  opacity: 0.8
+}
+
+.logoutBtn 
+{
+  margin-left: 20px;
+  background-color: rgb(47, 48, 49);
+  font-weight: bold;
+  border: none;
+  color: white;
+  padding: 7px 20px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.logoutBtn:hover 
+{
+  opacity: 0.8
 }

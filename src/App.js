@@ -110,11 +110,10 @@ class App extends Component {
   render() {
 
     return (
-      
       <div className="App">
-        <header className="App-header" >
+        <header className="App-header">
         
-        <img src= "pics/TimeIn_logo.png"/>
+        <img src= "pics/NofarLogo.bmp" />
         
           <div className="vertical-center2"> <h1>Shape-In</h1> </div>
           <div className="username vertical-center">

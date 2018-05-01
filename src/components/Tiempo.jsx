@@ -19,7 +19,7 @@ class Tiempo extends Component
         return (
 
             <ThemeProvider theme={{
-                background: 'rgb(162, 165, 169)',
+                background: 'rgb(240, 240, 240)',
                 fontFamily: 'Segoe UI Semibold',
                 headerBgColor: 'rgb(47, 48, 49)',
                 headerFontColor: 'White',
@@ -50,7 +50,6 @@ class Tiempo extends Component
                         id: '3',
                         message: 'Hi {previousValue}, nice to meet you!',
                         //message: 'Who is {previousValue}?',
-
                         end: true,
                         
                     },
@@ -66,4 +65,3 @@ class Tiempo extends Component
 
 
 export default Tiempo;
-
