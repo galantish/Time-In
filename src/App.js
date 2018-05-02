@@ -113,7 +113,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         
-        <img src= "pics/NofarLogo.bmp" />
+        <img src= "./pics/TimeIn_logo-02.png" />
         
           <div className="vertical-center2"> <h1>Shape-In</h1> </div>
           <div className="username vertical-center">
