@@ -14,10 +14,10 @@ export class AdminPage extends Component {
     }
 
     onSubmit = (event) => {
-        event.preventDefault()
-        const headLineName = this.state.headLineName
-        this.props.handleHeadLineName(headLineName)
-        this.props.history.push('/')
+        // event.preventDefault()
+        // const headLineName = this.state.headLineName
+        // this.props.handleHeadLineName(headLineName)
+        // this.props.history.push('/')
     }
 
     render() {
