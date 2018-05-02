@@ -32,6 +32,16 @@ export class AdminPage extends Component {
                         <input placeholder="Genish Mustach" onChange={this.editState} />
                     </label>
                     <br />
+                    <label>
+                        Start Time<br />
+                        <input placeholder="9:00" onChange={this.editState} />
+                    </label>
+                    <br />
+                    <label>
+                        Finish Time<br />
+                        <input placeholder="18:00" onChange={this.editState} />
+                    </label>
+                    <br />
                     <button onClick={this.onSubmit}>Submit</button>
                 </form>
             </div>
