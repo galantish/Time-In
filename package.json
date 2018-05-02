@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.4.4",
     "cross-fetch": "^2.1.1",
     "material-ui": "^1.0.0-beta.42",
     "material-ui-icons": "^1.0.0-beta.36",
@@ -15,6 +16,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.1.4",
     "react-simple-chatbot": "^0.2.9",
+    "react-simple-list": "^2.2.0",
     "react-slideshow-image": "^0.2.2",
     "styled-components": "^2.4.0",
     "tween.js": "^16.6.0",

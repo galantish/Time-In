@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import AddServices from '../components/AddServices';
+
 
 export class AdminPage extends Component {
 
@@ -19,6 +21,7 @@ export class AdminPage extends Component {
         // this.props.handleHeadLineName(headLineName)
         // this.props.history.push('/')
     }
+
 
     render() {
         return (
@@ -43,6 +46,9 @@ export class AdminPage extends Component {
                     </label>
                     <br />
                     <button onClick={this.onSubmit}>Submit</button>
+                    <div>
+                        <AddServices/>
+                    </div>
                 </form>
             </div>
         )

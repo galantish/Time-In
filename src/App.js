@@ -94,6 +94,7 @@ import MessagesArea from './components/MessagesArea';
 import { HomePage } from './pages/HomePage';
 import { AdminPage } from './pages/AdminPage';
 import Tiempo from './components/Tiempo';
+import { AddServices } from './components/AddServices';
 
 
 class App extends Component {
