@@ -225,7 +225,7 @@ class SchedulePage extends Component {
                 Save to Calendar
               </Button>
               <Button onClick={this.handleClose} color="primary">
-                Agree
+                Cancel
               </Button>
             </DialogActions>
           </Dialog>
