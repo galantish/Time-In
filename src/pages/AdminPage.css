@@ -1,11 +1,11 @@
 .control {
     width: 200px;
-    margin-left: 20px !important;
+    margin-left: 0 !important;
     margin-right: 20px !important;
 }
 
 .button-control {
-    margin-left: 20px !important;
+    margin-left: 0 !important;
     margin-right: 20px !important;
 }
 
@@ -14,9 +14,8 @@
     justify-content: space-around;
 }
 
-.Input{
-    color: rgb(47, 48, 49);
-    width: 100%;
-
+.App-Main {
+    padding-left: 0; 
+    width: 60px;
 
 }

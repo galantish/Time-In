@@ -11,6 +11,18 @@ class AddServices extends React.Component {
             items: []
         };
         this.addItem = this.addItem.bind(this);
+        this.deleteItem = this.deleteItem.bind(this);
+
+    }
+
+    deleteItem(key) {
+        var filteredItems = this.state.items.filter(function (item) {
+            return (item.key !== key);
+        });
+
+        this.setState({
+            items: filteredItems
+        });
     }
 
     addItem(e) {
@@ -26,7 +38,7 @@ class AddServices extends React.Component {
                 };
             });
 
-            
+
         }
         this._inputElement.value = "";
 
@@ -46,8 +58,9 @@ class AddServices extends React.Component {
                         <button type="submit">add</button>
                     </form>
                 </div>
-                  
-                <Services entries =  {this.state.items}/>
+
+                <Services entries={this.state.items}
+                    delete={this.deleteItem} />
             </div>
         );
     }

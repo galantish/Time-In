@@ -10,6 +10,8 @@ import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
 import Button from 'muicss/lib/react/button';
+import { ListItem, ListItemText } from 'material-ui/List';
+
 
 
 
@@ -57,47 +59,50 @@ export class AdminPage extends Component {
                         </label>
 
                         <label>
-                            Days of work<br />
-                            <Checkbox name="sunday" label="Sunday" defaultChecked={true} />
-                            <Checkbox name="monday" label="Monday" defaultChecked={true} />
-                            <Checkbox name="tuesday" label="Tuesday" defaultChecked={true} />
-                            <Checkbox name="wednesday" label="Wednesday" defaultChecked={true} />
-                            <Checkbox name="thursday" label="Thursday" defaultChecked={true} />
-                            <Checkbox name="friday" label="Friday" />
-                            <Checkbox name="saturday" label="Saturday" />
+                            <div>
+                                Days of work
+                                    <br />
+                                    <Checkbox name="sunday" label="Sunday" defaultChecked={true} /> <br />
+                                    <Checkbox name="monday" label="Monday" defaultChecked={true} /><br />
+                                    <Checkbox name="tuesday" label="Tuesday" defaultChecked={true} /><br />
+                                    <Checkbox name="wednesday" label="Wednesday" defaultChecked={true} /><br />
+                                    <Checkbox name="thursday" label="Thursday" defaultChecked={true} /><br />
+                                    <Checkbox name="friday" label="Friday" /><br />
+                                    <Checkbox name="saturday" label="Saturday" /><br />
+                            </div>
                         </label>
 
-                            Start Time:  
+                            Start Time:
                             <TimePicker placeholder="9:00" className="mui--z2" showSecond={false} minuteStep={15} />
-                            Finish Time:  
+                            Finish Time:
                             <TimePicker placeholder="18:00" className="mui--z2" showSecond={false} minuteStep={15} />
 
-                        <br />
-                        
-                    
-
-                    <br />
-                    <br />
-
-                    <label>
-                        Enter a sentense for your customers<br />
-                        <Textarea />
-                    </label>
+                            <br />
 
 
-                    <AddServices />
-                    <br />
+
+                            <br />
+                            <br />
+
+                            <label>
+                                Enter a sentense for your customers<br />
+                                <Textarea />
+                            </label>
+
+
+                            <AddServices />
+                            <br />
                     </Container>
-                    <Button onClick={this.onSubmit} variant="flat" color="primary">Submit</Button>
+                        <Button onClick={this.onSubmit} variant="flat" color="primary">Submit</Button>
 
                    
 
                 </form>
             </div>
-        )
-    }
-}
+                )
+            }
+        }
 ReactDOM.render(<AdminPage />, document.getElementById('root'));
-
-
-
+                
+                
+                

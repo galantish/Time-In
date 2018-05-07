@@ -35,8 +35,21 @@
     margin-bottom: 15px;
     border-radius: 5px;
     list-style: none;
+
+    transition: background-color .2s ease-out;
+
   }
 
   ul.theList {
     padding-left: 0;
   }
+
+  .addServices .theList li:hover {
+    background-color: gray;
+    text-decoration-color:  white;
+    cursor: pointer;
+  }
+
+  
+
+   
