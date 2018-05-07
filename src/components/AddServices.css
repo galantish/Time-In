@@ -1,0 +1,42 @@
+.addServices .header input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #FFF;
+    width: 165px;
+  }
+
+
+  .addServices .header button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+    margin-right: 0px;
+    background-color: #79b6e6;
+    color: #FFF;
+    border: 2px solid #79b6e6;
+  }
+
+
+  .addServices .header button:hover {
+    background-color: #003399;
+    border: 2px solid #003399;
+    cursor: pointer;
+  }
+
+  .addServices .theList {
+    list-style: none;
+    width: 250px;
+  } 
+
+  .addServices .theList li {
+    color: #333;
+    background-color: #e3e6ea;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    list-style: none;
+  }
+
+  ul.theList {
+    padding-left: 0;
+  }

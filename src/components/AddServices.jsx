@@ -1,25 +1,53 @@
 import React from 'react';
 import './AddServices.css'
 import Button from 'material-ui/Button';
+import Services from '../components/Services';
 
 
 class AddServices extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
-
+        this.state = {
+            items: []
+        };
+        this.addItem = this.addItem.bind(this);
     }
 
+    addItem(e) {
+        if (this._inputElement.value !== "") {
+            var newItem = {
+                text: this._inputElement.value,
+                key: Date.now()
+            };
+
+            this.setState((prevState) => {
+                return {
+                    items: prevState.items.concat(newItem)
+                };
+            });
+
+            
+        }
+        this._inputElement.value = "";
+
+        console.log(this.state.items);
+
+        e.preventDefault();
+
+
+    }
     render() {
         return (
             <div className="addServices">
                 <div className="header">
-                    <form>
-                        <input placeholder="Enter service to add">
+                    <form onSubmit={this.addItem}>
+                        <input ref={(a) => this._inputElement = a} placeholder="Enter service to add">
                         </input>
                         <button type="submit">add</button>
                     </form>
                 </div>
+                  
+                <Services entries =  {this.state.items}/>
             </div>
         );
     }

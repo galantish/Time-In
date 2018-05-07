@@ -1,6 +1,20 @@
 import React, { Component } from 'react'
 import AddServices from '../components/AddServices';
+import Container from 'muicss/lib/react/container';
+import ReactDOM from 'react-dom';
+import Checkbox from 'muicss/lib/react/checkbox';
+import Input from 'muicss/lib/react/input';
+import Panel from 'muicss/lib/react/panel';
+import Textarea from 'muicss/lib/react/textarea';
+import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
+import moment from 'moment';
+import Button from 'muicss/lib/react/button';
 
+
+
+const showSecond = true;
+const str = showSecond ? 'HH:mm:ss' : 'HH:mm';
 
 export class AdminPage extends Component {
 
@@ -30,28 +44,60 @@ export class AdminPage extends Component {
                     Admin Page
                 </h1>
                 <form>
-                    <label>
-                        Business Name:<br />
-                        <input placeholder="Genish Mustach" onChange={this.editState} />
-                    </label>
+                    <Container width="80%">
+
+                        <label>
+                            <br />
+                            <Input className="mui--z2" placeholder="Business Name" onChange={this.editState} />
+                        </label>
+                        <br />
+                        <label>
+                            <br />
+                            <Input className="mui--z2" placeholder="Email Address" onChange={this.editState} />
+                        </label>
+
+                        <label>
+                            Days of work<br />
+                            <Checkbox name="sunday" label="Sunday" defaultChecked={true} />
+                            <Checkbox name="monday" label="Monday" defaultChecked={true} />
+                            <Checkbox name="tuesday" label="Tuesday" defaultChecked={true} />
+                            <Checkbox name="wednesday" label="Wednesday" defaultChecked={true} />
+                            <Checkbox name="thursday" label="Thursday" defaultChecked={true} />
+                            <Checkbox name="friday" label="Friday" />
+                            <Checkbox name="saturday" label="Saturday" />
+                        </label>
+
+                            Start Time:  
+                            <TimePicker placeholder="9:00" className="mui--z2" showSecond={false} minuteStep={15} />
+                            Finish Time:  
+                            <TimePicker placeholder="18:00" className="mui--z2" showSecond={false} minuteStep={15} />
+
+                        <br />
+                        
+                    
+
                     <br />
-                    <label>
-                        Start Time<br />
-                        <input placeholder="9:00" onChange={this.editState} />
-                    </label>
                     <br />
+
                     <label>
-                        Finish Time<br />
-                        <input placeholder="18:00" onChange={this.editState} />
+                        Enter a sentense for your customers<br />
+                        <Textarea />
                     </label>
+
+
+                    <AddServices />
                     <br />
-                    <button onClick={this.onSubmit}>Submit</button>
-                    <div>
-                        <AddServices/>
-                    </div>
+                    </Container>
+                    <Button onClick={this.onSubmit} variant="flat" color="primary">Submit</Button>
+
+                   
+
                 </form>
             </div>
         )
     }
 }
+ReactDOM.render(<AdminPage />, document.getElementById('root'));
+
+
 
