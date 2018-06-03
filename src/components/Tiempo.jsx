@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import ChatBot from 'react-simple-chatbot';
 import {ThemeProvider} from 'styled-components'
 
+
 import './Tiempo.css'
 
 class Tiempo extends Component 
@@ -34,8 +35,15 @@ class Tiempo extends Component
                 
                 
                 <ChatBot
-                    
-                    steps={[
+                floating
+                // handleLink={props.handleLink}
+                // toggleFloating={props.toggleFloating}
+                hideUserAvatar
+                botAvatar={'pics/TimeIn_logo.png'}
+                botDelay={2500}
+                customDelay={100}
+                // opened={props.opened}
+                steps={[
                     {
                         id: '1',
                         message: 'What is your name?',
@@ -54,9 +62,8 @@ class Tiempo extends Component
                         
                     },
                     ]}
+            />
 
-                
-                />
                 
             </ThemeProvider>
         )
