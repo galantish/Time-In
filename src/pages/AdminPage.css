@@ -1,11 +1,11 @@
 .control {
     width: 200px;
-    margin-left: 0 !important;
+    margin-left: 20px !important;
     margin-right: 20px !important;
 }
 
 .button-control {
-    margin-left: 0 !important;
+    margin-left: 20px !important;
     margin-right: 20px !important;
 }
 
@@ -14,8 +14,11 @@
     justify-content: space-around;
 }
 
-.App-Main {
+ListItem {
     padding-left: 0; 
-    width: 60px;
+}
+.daysWork {
+    display: flex;
+    align-content: 'left';
 
 }

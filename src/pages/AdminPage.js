@@ -41,12 +41,12 @@ export class AdminPage extends Component {
 
     render() {
         return (
-            <div className="App-Main">
+            <div className="App-Main" >
                 <h1>
                     Admin Page
                 </h1>
                 <form>
-                    <Container width="80%">
+                    <Container width="80%" style = {{textAlign: 'left'}}>
 
                         <label>
                             <br />
@@ -59,7 +59,7 @@ export class AdminPage extends Component {
                         </label>
 
                         <label>
-                            <div>
+                            <div className = 'daysWork'>
                                 Days of work
                                     <br />
                                     <Checkbox name="sunday" label="Sunday" defaultChecked={true} /> <br />
@@ -78,9 +78,6 @@ export class AdminPage extends Component {
                             <TimePicker placeholder="18:00" className="mui--z2" showSecond={false} minuteStep={15} />
 
                             <br />
-
-
-
                             <br />
                             <br />
 
