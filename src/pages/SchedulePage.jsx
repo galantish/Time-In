@@ -136,14 +136,33 @@ class SchedulePage extends Component {
 
   render() {
 
-    // if (this.state.service == 'trx')
-    //   const pic = "pics/trx.png";
-    // else
-    const pic = "pics/strength.png";
+    var pic = "pics/TRX.png";
 
+    switch(this.state.service)
+    {
+      case 'trx':
+        pic = "pics/TRX.png";
+        break;
+      case 'pilates':
+        pic = "pics/pilates.png";
+        break;
+      case 'strength':
+        pic = "pics/strength.png";
+        break;
+      case 'hit':
+        pic = "pics/HIT.png";
+        break;
+      case 'cardio':
+        pic = "pics/cardio.png";
+        break;
+      case 'crossFit':
+        pic = "pics/cross-fit.png";
+        break;
+      case 'yoga':
+        pic = "pics/yoga.png";
+        break;
+    } 
       
-    //const pic = this.state.service === 'trx' ? "pics/trx.png" : "/pics/yoga.png"; 
-
     return (
       <div>
         <form class="search_area" autoComplete="off">
