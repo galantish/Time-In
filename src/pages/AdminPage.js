@@ -42,35 +42,40 @@ export class AdminPage extends Component {
     render() {
         return (
             <div className="App-Main" >
+            
                 <h1>
                     Admin Page
                 </h1>
-                <form>
-                    <Container width="80%" style = {{textAlign: 'left'}}>
-
-                        <label>
-                            <br />
-                            <Input className="mui--z2" placeholder="Business Name" onChange={this.editState} />
-                        </label>
-                        <br />
-                        <label>
-                            <br />
-                            <Input className="mui--z2" placeholder="Email Address" onChange={this.editState} />
-                        </label>
-
-                        <label>
-                            <div className = 'daysWork'>
-                                Days of work
+                {/* <form> */}
+                    <div class ="Container" width="80%" style = {{textAlign: 'left'}}>
+                        <div class="row">
+                            <div class="col-sm">
+                                <label>
                                     <br />
-                                    <Checkbox name="sunday" label="Sunday" defaultChecked={true} /> <br />
-                                    <Checkbox name="monday" label="Monday" defaultChecked={true} /><br />
-                                    <Checkbox name="tuesday" label="Tuesday" defaultChecked={true} /><br />
-                                    <Checkbox name="wednesday" label="Wednesday" defaultChecked={true} /><br />
-                                    <Checkbox name="thursday" label="Thursday" defaultChecked={true} /><br />
-                                    <Checkbox name="friday" label="Friday" /><br />
-                                    <Checkbox name="saturday" label="Saturday" /><br />
+                                    <Input className="mui--z2" placeholder="Business Name" onChange={this.editState} />
+                                </label>
+                                <br />
+                                <label>
+                                    <br />
+                                    <Input className="mui--z2" placeholder="Email Address" onChange={this.editState} />
+                                </label>
                             </div>
-                        </label>
+                        
+                            <label>
+                                <div className = 'daysWork'>
+                                    Days of work
+                                        <br />
+                                        <Checkbox name="sunday" label="Sunday" defaultChecked={true} /> <br />
+                                        <Checkbox name="monday" label="Monday" defaultChecked={true} /><br />
+                                        <Checkbox name="tuesday" label="Tuesday" defaultChecked={true} /><br />
+                                        <Checkbox name="wednesday" label="Wednesday" defaultChecked={true} /><br />
+                                        <Checkbox name="thursday" label="Thursday" defaultChecked={true} /><br />
+                                        <Checkbox name="friday" label="Friday" /><br />
+                                        <Checkbox name="saturday" label="Saturday" /><br />
+                                </div>
+                            
+                            </label>
+                        
 
                             Start Time:
                             <TimePicker placeholder="9:00" className="mui--z2" showSecond={false} minuteStep={15} />
@@ -80,21 +85,24 @@ export class AdminPage extends Component {
                             <br />
                             <br />
                             <br />
-
+                            <div class="col-sm">
                             <label>
                                 Enter a sentense for your customers<br />
                                 <Textarea />
                             </label>
+                            
 
 
                             <AddServices />
                             <br />
-                    </Container>
+                            </div>
+                            </div>
                         <Button onClick={this.onSubmit} variant="flat" color="primary">Submit</Button>
 
                    
 
-                </form>
+                {/* </form> */}
+            </div>
             </div>
                 )
             }

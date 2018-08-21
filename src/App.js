@@ -118,11 +118,9 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <NavLink to="/">
-              <img src="./pics/NofarLogo.bmp" />
+              <img src="./pics/TimeIn_logo.png" />
             </NavLink>
-            <NavLink to="/admin">
-              <h1 className="App-title">Admin Console</h1>
-            </NavLink>
+
             <div className="vertical-center2"> <h1>Shape-In</h1> </div>
             <div className="username vertical-center">
               {this.state.name}
