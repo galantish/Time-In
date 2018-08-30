@@ -11,6 +11,8 @@ import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
 import Button from 'muicss/lib/react/button';
 import { ListItem, ListItemText } from 'material-ui/List';
+import Row from 'muicss/lib/react/row';
+import Col from 'muicss/lib/react/col';
 
 
 
@@ -41,15 +43,15 @@ export class AdminPage extends Component {
 
     render() {
         return (
+            <Container fluid={true}>
             <div className="App-Main" >
             
                 <h1>
-                    Admin Page
+                    Business Owner Page
                 </h1>
                 {/* <form> */}
-                    <div class ="Container" width="80%" style = {{textAlign: 'left'}}>
-                        <div class="row">
-                            <div class="col-sm">
+                    <Row>
+                    <Col md="1col">
                                 <label>
                                     <br />
                                     <Input className="mui--z2" placeholder="Business Name" onChange={this.editState} />
@@ -59,7 +61,8 @@ export class AdminPage extends Component {
                                     <br />
                                     <Input className="mui--z2" placeholder="Email Address" onChange={this.editState} />
                                 </label>
-                            </div>
+                                </Col>
+                            <Col md="col2">
                         
                             <label>
                                 <div className = 'daysWork'>
@@ -75,8 +78,8 @@ export class AdminPage extends Component {
                                 </div>
                             
                             </label>
-                        
 
+                            
                             Start Time:
                             <TimePicker placeholder="9:00" className="mui--z2" showSecond={false} minuteStep={15} />
                             Finish Time:
@@ -90,24 +93,23 @@ export class AdminPage extends Component {
                                 Enter a sentense for your customers<br />
                                 <Textarea />
                             </label>
-                            
+                            </div>
 
 
                             <AddServices />
                             <br />
-                            </div>
-                            </div>
+                            </Col>
+                            </Row>
+
                         <Button onClick={this.onSubmit} variant="flat" color="primary">Submit</Button>
 
                    
 
                 {/* </form> */}
             </div>
-            </div>
+                        </Container>
+
                 )
             }
         }
 ReactDOM.render(<AdminPage />, document.getElementById('root'));
-                
-                
-                

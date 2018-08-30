@@ -1,5 +1,6 @@
 
 .tiempo-wrapper {
+    display: none;
     position: fixed; 
     bottom: 10px;
     right: 10px;
@@ -11,7 +12,7 @@
 
 @media screen and (max-width: 900px)  {
     .tiempo-wrapper {
-        display: flex;
+        display: none;
     }
 }
 
@@ -19,7 +20,7 @@
     .tiempo-wrapper {
         width: 20%;
         flex-direction: column;
-        display: flex;
+        display: none;
     }
 }   
 
