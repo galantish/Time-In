@@ -1,6 +1,6 @@
 import React from "react";
 import "./AddServices.css";
-import { Button, IconButton } from "material-ui";
+import {Button, IconButton} from "material-ui";
 import Services from "../components/Services";
 
 class AddServices extends React.Component {
@@ -8,19 +8,15 @@ class AddServices extends React.Component {
     super(props);
     this.state = {
       items: [],
-      name: "",
-      duration: ""
+      input: ""
     };
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleDurationChange = this.handleDurationChange.bind(this);
   }
-  handleNameChange(event) {
-    this.setState({ name: event.target.value });
-  }
-  handleDurationChange(event) {
-    this.setState({ duration: event.target.value });
+  handleInputChange(event) {
+    this.setState({ input: event.target.value });
   }
   deleteItem(key) {
     var filteredItems = this.state.items.filter(function(item) {
@@ -31,22 +27,30 @@ class AddServices extends React.Component {
       items: filteredItems
     });
   }
+  handleDurationChange(key, value) {
+    var index = this.state.items.findIndex(item => item.key === key);
+    let newItem = Object.assign({}, this.state.items[index], {
+      duration: value
+    });
+    var newItems = [...this.state.items];
+    newItems[index] = newItem;
+    this.setState({
+      items: newItems
+    });
+  }
 
   addItem(e) {
-    if (!this.state.name) alert("Enter service name");
-    else if (!this.state.duration) alert("Enter duration");
-    else {
+    if (this.state.input !== "") {
       var newItem = {
-        text: this.state.name,
+        text: this.state.input,
         key: Date.now(),
-        duration: this.state.duration
+        duration: 60
       };
 
       this.setState(prevState => {
         return {
           items: prevState.items.concat(newItem),
-          name: "",
-          duration: ""
+          input: ""
         };
       });
     }
@@ -59,24 +63,17 @@ class AddServices extends React.Component {
       <div className="addServices">
         <div className="header">
           <form onSubmit={this.addItem}>
+            {/* <input ref={(a) => this._inputElement = a} placeholder="Enter service to add" /> */}
             <input
-              style={{ width: "250px" }}
-              value={this.state.name}
-              onChange={this.handleNameChange}
-              placeholder="Service name"
-            />
-            <input
-              type="number"
-              style={{ width: "80px" }}
-              value={this.state.duration}
-              onChange={this.handleDurationChange}
-              placeholder="Duration (minutes)"
+              value={this.state.input}
+              onChange={this.handleInputChange}
+              placeholder="Enter service to add"
             />
             <button type="submit">add</button>
           </form>
         </div>
 
-        <Services entries={this.state.items} delete={this.deleteItem} />
+        <Services entries={this.state.items} delete={this.deleteItem} onDurationChange={this.handleDurationChange} />
       </div>
     );
   }
