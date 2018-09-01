@@ -35,7 +35,7 @@ class UserQuery extends Component {
         if (this.readyState === 4) {
           const data = JSON.parse(this.responseText);
           console.log(data)
-          const bindings = data.query;
+          const bindings = data._text;
           console.log(bindings)
           if (bindings && bindings.length > 0) {
             self.setState({ loading: false, result: bindings });
