@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import ChatBot, { Loading } from 'react-simple-chatbot';
 import {saveToCalendar} from '../components/saveToGoogle'
 import './Tiempo.css'
-import { Moment } from 'moment';
+import Moment from 'moment';
 
 class UserQuery extends Component {
     constructor(props) {
@@ -83,14 +83,20 @@ class UserQuery extends Component {
           break;
 
       }
+      console.log(this.state.data.date)
+      console.log(Moment(this.state.data.date));
       const title = `Appointment to ${this.state.data.service} @ 'Shape-In'`;
       const content = "Please notice if you are late";
-      const range = { start: this.state.data.date , end: Moment(this.state.data.date).add(30, 'm').toDate()};
+      const range = { start: this.state.data.date , end: Moment(this.state.data.date).add(timeRequested, 'm').toDate()};
       const calendarId = 'primary';
+      
+      
     
       saveToCalendar(title, content, range, calendarId);
       
-      this.triggerNext();
+      this.setState({ trigger: true }, () => {
+        this.props.triggerNextStep();
+      });
     }
 
     render() {
@@ -111,7 +117,7 @@ class UserQuery extends Component {
                 !trigger &&
                 <div>
                 <button
-                  onClick={() => this.takeAction()}
+                onClick={() => this.takeAction()}
                 >
                   Yes
                 </button> 
