@@ -7,7 +7,7 @@ export const HomePage = props => {
     return (
         <div className='App-Main'>
             <MessagesArea />
-            <SchedulePage getUserName={props.handleUserName} />
+            <SchedulePage getUserName={props.handleUserName} businessName={props.businessName}/>
         </div>
     )
 } 

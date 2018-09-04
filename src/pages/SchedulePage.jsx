@@ -21,14 +21,14 @@ import Moment from 'moment'
 
 import GoogleClientCalender from '../components/GoogleClientCalender'
 import AvailableList from '../components/AvailableList'
-import {saveToCalendar} from '../components/saveToGoogle'
+import { saveToCalendar } from '../components/saveToGoogle'
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
 class SchedulePage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       service: 'trx',
@@ -39,7 +39,8 @@ class SchedulePage extends Component {
       showProccessing: false,
       hasError: false,
       showDialog: false,
-      selectedTime: { start: '', end: ''},
+      selectedTime: { start: '', end: '' },
+      businessName: props.businessName,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -57,8 +58,8 @@ class SchedulePage extends Component {
 
   handleChange = event => {
     let timeRequested = undefined
-    if (event.target.name === "service"){
-      switch(event.target.value){
+    if (event.target.name === "service") {
+      switch (event.target.value) {
         case "trx":
           timeRequested = 45
           break;
@@ -88,14 +89,26 @@ class SchedulePage extends Component {
 
   };
 
-  handleSaveToCalendar(){
-    const title = `Appointment to ${this.state.service} @ 'Shape-In'`,
-    content = "Please notice if you are late", 
-    range = this.state.selectedTime, 
-    calendarId = 'primary';
+  handleSaveToCalendar() {
+    const title = `Appointment to ${this.state.service} @ ${this.state.businessName}`,
+      content = "Please notice if you are late",
+      range = this.state.selectedTime,
+      calendarId = 'primary';
     
-    saveToCalendar(title, content, range, calendarId);
-    this.handleClose();
+    // Get business eMail
+    const options = {
+      method: "GET",
+    }
+
+    fetch(`http://localhost:8080/Businesses/${this.state.businessName}`, options).then(response => {
+      response.json().then(data => {
+        saveToCalendar(title, content, range, calendarId, data.businesses[0].googleUser);
+        this.handleClose();
+      })
+    }).catch(err => {
+      alert('error in fetching business email')
+      this.handleClose();
+    })
   }
 
   handleClick = (list) => {
@@ -103,14 +116,14 @@ class SchedulePage extends Component {
     this.getFreeTimes(list);
   };
 
-  handlePickTime(e, value){
-    this.setState({selectedTime: value})
+  handlePickTime(e, value) {
+    this.setState({ selectedTime: value })
     this.handleOpen()
   }
 
-  getFreeTimes(userBusy){
+  getFreeTimes(userBusy) {
     this.setState({ showProccessing: true, showResult: false, hasError: false })
-    
+
     const gapInMinutes = 10;
     const startingAt = this.state.from;
     const timeRequested = this.state.timeRequested;
@@ -122,14 +135,14 @@ class SchedulePage extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
-    } 
+    }
 
     fetch("http://localhost:8080/", options).then(response => {
       response.json().then(data => {
-        this.setState( { results: data, showResult: true, showProccessing: false, hasError: false } )
+        this.setState({ results: data, showResult: true, showProccessing: false, hasError: false })
       })
-    }).catch(err =>{
-      this.setState( { showProccessing: false, hasError: true } );
+    }).catch(err => {
+      this.setState({ showProccessing: false, hasError: true });
     })
   }
 
@@ -138,8 +151,7 @@ class SchedulePage extends Component {
 
     var pic = "pics/TRX.png";
 
-    switch(this.state.service)
-    {
+    switch (this.state.service) {
       case 'trx':
         pic = "pics/TRX.png";
         break;
@@ -161,8 +173,8 @@ class SchedulePage extends Component {
       case 'yoga':
         pic = "pics/yoga.png";
         break;
-    } 
-      
+    }
+
     return (
       <div>
         <form class="search_area" autoComplete="off">
@@ -175,8 +187,8 @@ class SchedulePage extends Component {
                 name: 'service',
                 id: 'service-combo',
               }}
-              Width = "100px">
-              <MenuItem value="trx" default>TRX</MenuItem> 
+              Width="100px">
+              <MenuItem value="trx" default>TRX</MenuItem>
               <MenuItem value="pilates">Pilates</MenuItem>
               <MenuItem value="strength">Strength</MenuItem>
               <MenuItem value="hit">HIT</MenuItem>
@@ -186,7 +198,7 @@ class SchedulePage extends Component {
 
             </Select>
           </FormControl>
-          <TextField 
+          <TextField
             id="from-when"
             name="from"
             label="As of"
@@ -195,14 +207,14 @@ class SchedulePage extends Component {
             defaultValue={this.state.from}
             className="control"
             InputLabelProps={{
-            shrink: true,
-            
+              shrink: true,
+
             }}
           />
-          <br/><br/>
-          { /* מחביא פה את הלחצן find */ }
-          <GoogleClientCalender onClick={this.handleClick} getUserName={this.props.getUserName}/>
-          <br/><br/>
+          <br /><br />
+          { /* מחביא פה את הלחצן find */}
+          <GoogleClientCalender onClick={this.handleClick} getUserName={this.props.getUserName} />
+          <br /><br />
 
           {
             this.state.hasError && "Error occurred :("
@@ -214,9 +226,9 @@ class SchedulePage extends Component {
             this.state.showResult &&
             this.state.results &&
             (
-              this.state.results.length > 0 ? 
-              <AvailableList className="available-list" list={this.state.results} pic={pic} onClick={this.handlePickTime}/> :
-              "No results available"
+              this.state.results.length > 0 ?
+                <AvailableList className="available-list" list={this.state.results} pic={pic} onClick={this.handlePickTime} /> :
+                "No results available"
             )
           }
         </form>
@@ -234,9 +246,9 @@ class SchedulePage extends Component {
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-slide-description">
-                Do you want to set up appointment to { Moment(this.state.selectedTime.start).format("YYYY-MM-DD HH:mm ") } 
-                until { Moment(this.state.selectedTime.end).format("YYYY-MM-DD HH:mm ") } 
-                for {this.state.service} At 'Shape-In'?
+                Do you want to set up appointment to {Moment(this.state.selectedTime.start).format("YYYY-MM-DD HH:mm ")}
+                until {Moment(this.state.selectedTime.end).format("YYYY-MM-DD HH:mm ")}
+                for {this.state.service} At {this.state.businessName}?
               </DialogContentText>
             </DialogContent>
             <DialogActions>

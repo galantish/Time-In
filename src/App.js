@@ -106,8 +106,8 @@ class App extends Component {
     }
   }
 
-  handleUserName(name) {
-    this.setState({ name })
+  handleUserName = (name) => {
+    this.state.name = name;
   }
 
 
@@ -120,14 +120,17 @@ class App extends Component {
             <NavLink to="/">
               <img src="./pics/TimeIn_logo.png" />
             </NavLink>
-            <div className="vertical-center2"> <h1>Shape-In</h1> </div>
+            <div className="vertical-center2"> <h1>Time-In</h1> </div>
             <div className="username vertical-center">
               {this.state.name}
             </div>
           </header>
           <Switch>
-            <Route exact path="/" render={props => <HomePage handleUserName={this.handleUserName} />}></Route>
             <Route exact path="/admin" render={props => <AdminPage />}></Route>
+            <Route path="/:name" render=
+              {
+                props => <HomePage handleUserName={this.handleUserName.bind(this)} businessName={props.match.params.name} />
+              }></Route>
           </Switch>
           <Tiempo />
           <div className="footer-container">

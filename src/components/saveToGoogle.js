@@ -1,6 +1,6 @@
 
   
-export function saveToCalendar(title, content, range, calendarId){
+export function saveToCalendar(title, content, range, calendarId, businessEMail){
   const event = {
       'summary': title,
       'location': "Sheinkin St 58, Giv'atayim",
@@ -12,7 +12,7 @@ export function saveToCalendar(title, content, range, calendarId){
         'dateTime': range.end,
       },
       'attendees': [
-        {'email': 'intimeproject2018@gmail.com'}
+        {'email': businessEMail}
       ],
       'reminders': {
         'useDefault': true

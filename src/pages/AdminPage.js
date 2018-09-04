@@ -13,6 +13,7 @@ import Button from 'muicss/lib/react/button';
 import { ListItem, ListItemText } from 'material-ui/List';
 import Row from 'muicss/lib/react/row';
 import Col from 'muicss/lib/react/col';
+import fetch from 'cross-fetch'
 
 
 
@@ -33,8 +34,25 @@ export class AdminPage extends Component {
         })
     }
 
+    saveBusiness = (business) => {
+        const options = {
+            method: "POST",
+            body: JSON.stringify(business),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+
+        fetch("http://localhost:8080/Businesses", options).then(response => {
+            alert('Business Saved!')
+        }).catch(err => {
+            alert('Error in saving business: ' + err)
+        })
+    }
+
     onSubmit = (event) => {
-      //TODO: Ask Nofar and Snir why comment
+        //TODO: Ask Nofar and Snir why comment
         // event.preventDefault()
         // const headLineName = this.state.headLineName
         // this.props.handleHeadLineName(headLineName)
@@ -45,42 +63,42 @@ export class AdminPage extends Component {
     render() {
         return (
             <Container fluid={true}>
-            <div className="App-Main" >
-            
-                <h1>
-                    Business Owner Page
+                <div className="App-Main" >
+
+                    <h1>
+                        Business Owner Page
                 </h1>
-                {/* <form> */}
+                    {/* <form> */}
                     <Row>
-                    <Col md="1col">
-                                <label>
-                                    <br />
-                                    <Input className="mui--z2" placeholder="Business Name" onChange={this.editState} />
-                                </label>
-                                <br />
-                                <label>
-                                    <br />
-                                    <Input className="mui--z2" placeholder="Email Address" onChange={this.editState} />
-                                </label>
-                                </Col>
-                            <Col md="col2">
-                        
+                        <Col md="1col">
                             <label>
-                                <div className = 'daysWork'>
+                                <br />
+                                <Input className="mui--z2" placeholder="Business Name" onChange={this.editState} />
+                            </label>
+                            <br />
+                            <label>
+                                <br />
+                                <Input className="mui--z2" placeholder="Email Address" onChange={this.editState} />
+                            </label>
+                        </Col>
+                        <Col md="col2">
+
+                            <label>
+                                <div className='daysWork'>
                                     Days of work
                                         <br />
-                                        <Checkbox name="sunday" label="Sunday" defaultChecked={true} /> <br />
-                                        <Checkbox name="monday" label="Monday" defaultChecked={true} /><br />
-                                        <Checkbox name="tuesday" label="Tuesday" defaultChecked={true} /><br />
-                                        <Checkbox name="wednesday" label="Wednesday" defaultChecked={true} /><br />
-                                        <Checkbox name="thursday" label="Thursday" defaultChecked={true} /><br />
-                                        <Checkbox name="friday" label="Friday" /><br />
-                                        <Checkbox name="saturday" label="Saturday" /><br />
+                                    <Checkbox name="sunday" label="Sunday" defaultChecked={true} /> <br />
+                                    <Checkbox name="monday" label="Monday" defaultChecked={true} /><br />
+                                    <Checkbox name="tuesday" label="Tuesday" defaultChecked={true} /><br />
+                                    <Checkbox name="wednesday" label="Wednesday" defaultChecked={true} /><br />
+                                    <Checkbox name="thursday" label="Thursday" defaultChecked={true} /><br />
+                                    <Checkbox name="friday" label="Friday" /><br />
+                                    <Checkbox name="saturday" label="Saturday" /><br />
                                 </div>
-                            
+
                             </label>
 
-                            
+
                             Start Time:
                             <TimePicker placeholder="9:00" className="mui--z2" showSecond={false} minuteStep={15} />
                             Finish Time:
@@ -90,27 +108,27 @@ export class AdminPage extends Component {
                             <br />
                             <br />
                             <div class="col-sm">
-                            <label>
-                                Enter a sentense for your customers<br />
-                                <Textarea />
-                            </label>
+                                <label>
+                                    Enter a sentense for your customers<br />
+                                    <Textarea />
+                                </label>
                             </div>
 
 
                             <AddServices />
                             <br />
-                            </Col>
-                            </Row>
+                        </Col>
+                    </Row>
 
-                        <Button onClick={this.onSubmit} variant="flat" color="primary">Submit</Button>
+                    <Button onClick={this.onSubmit} variant="flat" color="primary">Submit</Button>
 
-                   
 
-                {/* </form> */}
-            </div>
-                        </Container>
 
-                )
-            }
-        }
+                    {/* </form> */}
+                </div>
+            </Container>
+
+        )
+    }
+}
 ReactDOM.render(<AdminPage />, document.getElementById('root'));
