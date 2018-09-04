@@ -6,23 +6,33 @@ import './MessagesArea.css'
 class MessagesArea extends React.Component{
     constructor(props){
       super(props)
-      this.state = {img:[
-        'imgs/image1.jpg',
-        'imgs/image2.jpg',
-        'imgs/image3.jpg',
-        'imgs/image4.jpg',
-        'imgs/image5.jpg',
-        'imgs/image6.jpg',
-        'imgs/image7.jpg',
-        'imgs/image8.jpg'
-    ],}
-  
+      this.state = {business: { 
+        images: [],
+      }}
     }
   
+    componentDidMount = async() => {
+        // Get business
+        const options = {
+         method: "GET",
+       }
+   
+       
+       await fetch(`http://localhost:8080/Businesses/${this.props.businessName}`, options).then(response => {
+         response.json().then(data => {
+           this.setState({
+             business: data.businesses[0],
+           });
+         });
+       }).catch(err => {
+         alert('error in fetching business email')
+       });
+     };
+
     render(){ 
         return (
             <Slide
-          images={this.state.img}
+          images={this.state.business.images}
           duration={4000}
             transitionDuration={3000}
             />

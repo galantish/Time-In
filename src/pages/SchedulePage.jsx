@@ -31,7 +31,7 @@ class SchedulePage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      service: 'trx',
+      service: '',
       from: Moment().format("YYYY-MM-DDTHH:mm"),
       showResult: false,
       results: [],
@@ -41,12 +41,40 @@ class SchedulePage extends Component {
       showDialog: false,
       selectedTime: { start: '', end: '' },
       businessName: props.businessName,
+      business: { 
+        services: [],
+        name: '',
+        iconPath: '',
+        googleUser: '',
+      }
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handlePickTime = this.handlePickTime.bind(this);
   }
+
+  componentDidMount = async() => {
+     // Get business
+     const options = {
+      method: "GET",
+    }
+
+    
+    await fetch(`http://localhost:8080/Businesses/${this.state.businessName}`, options).then(response => {
+      response.json().then(data => {
+        this.setState({
+          business: data.businesses[0],
+          service:  data.businesses[0].name,
+        });
+
+        this.handleClose();
+      })
+    }).catch(err => {
+      alert('error in fetching business email')
+      this.handleClose();
+    });
+  };
 
   handleOpen = () => {
     this.setState({ showDialog: true });
@@ -59,30 +87,7 @@ class SchedulePage extends Component {
   handleChange = event => {
     let timeRequested = undefined
     if (event.target.name === "service") {
-      switch (event.target.value) {
-        case "trx":
-          timeRequested = 45
-          break;
-        case "pilates":
-          timeRequested = 60
-          break;
-        case "strenght":
-          timeRequested = 60
-          break;
-        case "hit":
-          timeRequested = 45
-          break;
-        case "cardio":
-          timeRequested = 50
-          break;
-        case "crossFit":
-          timeRequested = 80
-          break;
-        case "yoga":
-          timeRequested = 75
-          break;
-
-      }
+      timeRequested = this.state.business.services.find(srv => srv.name === event.target.value).duration;
     }
 
     this.setState({ [event.target.name]: event.target.value, showResult: false, hasError: false, timeRequested });
@@ -94,21 +99,8 @@ class SchedulePage extends Component {
       content = "Please notice if you are late",
       range = this.state.selectedTime,
       calendarId = 'primary';
-    
-    // Get business eMail
-    const options = {
-      method: "GET",
-    }
-
-    fetch(`http://localhost:8080/Businesses/${this.state.businessName}`, options).then(response => {
-      response.json().then(data => {
-        saveToCalendar(title, content, range, calendarId, data.businesses[0].googleUser);
-        this.handleClose();
-      })
-    }).catch(err => {
-      alert('error in fetching business email')
-      this.handleClose();
-    })
+  
+      saveToCalendar(title, content, range, calendarId, this.state.business.googleUser);
   }
 
   handleClick = (list) => {
@@ -146,35 +138,12 @@ class SchedulePage extends Component {
     })
   }
 
+  get servicePic() {
+    return this.state.business.services.find(srv => srv.name === this.state.service).iconPath;
+  }
+
 
   render() {
-
-    var pic = "pics/TRX.png";
-
-    switch (this.state.service) {
-      case 'trx':
-        pic = "pics/TRX.png";
-        break;
-      case 'pilates':
-        pic = "pics/pilates.png";
-        break;
-      case 'strength':
-        pic = "pics/strength.png";
-        break;
-      case 'hit':
-        pic = "pics/HIT.png";
-        break;
-      case 'cardio':
-        pic = "pics/cardio.png";
-        break;
-      case 'crossFit':
-        pic = "pics/cross-fit.png";
-        break;
-      case 'yoga':
-        pic = "pics/yoga.png";
-        break;
-    }
-
     return (
       <div>
         <form class="search_area" autoComplete="off">
@@ -188,13 +157,11 @@ class SchedulePage extends Component {
                 id: 'service-combo',
               }}
               Width="100px">
-              <MenuItem value="trx" default>TRX</MenuItem>
-              <MenuItem value="pilates">Pilates</MenuItem>
-              <MenuItem value="strength">Strength</MenuItem>
-              <MenuItem value="hit">HIT</MenuItem>
-              <MenuItem value="cardio">Cardio</MenuItem>
-              <MenuItem value="crossFit">Cross-Fit</MenuItem>
-              <MenuItem value="yoga">Yoga</MenuItem>
+              {this.state.business.services.map((srv, idx) => (
+                 idx === 0 ?
+                 <MenuItem key={srv.name} value={srv.name} default>{srv.name}</MenuItem> :
+                 <MenuItem key={srv.name} value={srv.name}>{srv.name}</MenuItem>
+              ))}
 
             </Select>
           </FormControl>
@@ -227,7 +194,7 @@ class SchedulePage extends Component {
             this.state.results &&
             (
               this.state.results.length > 0 ?
-                <AvailableList className="available-list" list={this.state.results} pic={pic} onClick={this.handlePickTime} /> :
+                <AvailableList className="available-list" list={this.state.results} pic={this.servicePic} onClick={this.handlePickTime} /> :
                 "No results available"
             )
           }
