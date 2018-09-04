@@ -4,8 +4,9 @@ import TextField from 'material-ui/TextField';
 import {ThemeProvider} from 'styled-components'
 import PropTypes from 'prop-types';
 import ChatBot, { Loading } from 'react-simple-chatbot';
-
+import {saveToCalendar} from '../components/saveToGoogle'
 import './Tiempo.css'
+import Moment from 'moment';
 
 class UserQuery extends Component {
     constructor(props) {
@@ -13,6 +14,7 @@ class UserQuery extends Component {
   
       this.state = {
         loading: true,
+        data: {},
         result: '',
         trigger: false,
       };
@@ -35,10 +37,10 @@ class UserQuery extends Component {
         if (this.readyState === 4) {
           const data = JSON.parse(this.responseText);
           console.log(data)
-          const bindings = data.query;
-          console.log(bindings)
-          if (bindings && bindings.length > 0) {
-            self.setState({ loading: false, result: bindings });
+          const bindings = data;
+          console.log(bindings.text)
+          if (bindings && bindings.text && bindings.text.length > 0) {
+            self.setState({ loading: false, result: bindings.text, data: bindings });
           } else {
             self.setState({ loading: false, result: 'Not found.' });
           }
@@ -54,7 +56,49 @@ class UserQuery extends Component {
         this.props.triggerNextStep();
       });
     }
-  
+    
+    takeAction() {
+      let timeRequested = undefined;
+      switch(this.state.data.service){
+        case "TRX":
+          timeRequested = 45
+          break;
+        case "Pilates":
+          timeRequested = 60
+          break;
+        case "Strength":
+          timeRequested = 60
+          break;
+        case "HIT":
+          timeRequested = 45
+          break;
+        case "Cardio":
+          timeRequested = 50
+          break;
+        case "Cross-Fit":
+          timeRequested = 80
+          break;
+        case "Yoga":
+          timeRequested = 75
+          break;
+
+      }
+      console.log(this.state.data.date)
+      console.log(Moment(this.state.data.date));
+      const title = `Appointment to ${this.state.data.service} @ 'Shape-In'`;
+      const content = "Please notice if you are late";
+      const range = { start: this.state.data.date , end: Moment(this.state.data.date).add(timeRequested, 'm').toDate()};
+      const calendarId = 'primary';
+      
+      
+    
+      saveToCalendar(title, content, range, calendarId);
+      
+      this.setState({ trigger: true }, () => {
+        this.props.triggerNextStep();
+      });
+    }
+
     render() {
       const { trigger, loading, result } = this.state;
   
@@ -71,11 +115,18 @@ class UserQuery extends Component {
             >
               {
                 !trigger &&
+                <div>
                 <button
-                  onClick={() => this.triggetNext()}
+                onClick={() => this.takeAction()}
                 >
-                  Ok
+                  Yes
+                </button> 
+                <button
+                onClick={() => this.triggetNext()}
+                >
+                  No
                 </button>
+                </div>
               }
             </div>
           }
